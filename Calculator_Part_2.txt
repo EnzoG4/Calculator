@@ -1,0 +1,115 @@
+In this assignment you will use Javascript/JQuery to make your
+Calculator from HW 1 work. At the high level, there are four steps
+involved:
+
+Step 1: Hook up your HW 1 calculator with Javascript events.
+
+Step 2: Turn a text expression into a list of strings representing
+numbers and operators.
+
+Step 3: Parse the tokens and compute the resulting value. Make it a
+working calculator!
+
+Step 4: Add a couple of advanced features such as operator precedence.
+
+Let’s approach this step by step. 
+
+Step 1: Javascript Events
+
+Starting with your part 1 calculator, make it so that when your buttons
+are pressed, the numbers and operators get appended to the output field.
+It’s perfectly fine to print the expression as one field in the display
+(13 + 7), unlike the way calculator actually works.
+
+1. Create a new javascript file called calc.js that you reference in
+calc.html using a <script> tag. Put it in a js folder.
+
+2. Use JQuery to bind button click events to Javascript code.
+
+3. Surround the operators (+, -, *, /) with space characters. This will
+make it much easier to tokenize the input string in step 2.
+
+4. The equal button is a special case. When this button is clicked, it
+should call a calculate function to computes the result and display it
+in the output field.
+
+5. The clear button (C) is another special case. When clicked, it should
+clear the input.
+
+Step 2: Parse input tokens
+
+Now you’re going to start implementing your calculate function.
+
+1. Start by retrieving the expression string from your calculator’s
+output field. For example, this will be something like “13 + 7”.
+
+2. Use the split function of String to turn the input into an array of
+numbers and operators [“12”, “+”, “3”]. To test this, you can output the
+array into the console.
+
+Step 3: Evaluate the expression
+The next step is to process your array of tokens and turn it into a result.
+1. First we’ll need a read_operand function that attempts to interpret
+the first token in your array as a number. Here’s a pseudocode
+description of what needs to be done:
+
+        read_operand(array of tokens) {
+           num = first element of the array
+           remove the first element using the .shift() method of array
+           use built-in function parseInt() to convert num to an integer
+           if the result is NaN (not a number) throw an error
+           return the result
+		}
+
+	NOTE: For this assignment, don’t worry about numbers with decimal points .
+       tokens = [‘123’,’42’,’hi’,’25’];
+       read_operand(tokens);    // call this 4 times: did you get the expected results?
+
+2. Now write the evaluate function that processes the token array element-by-element:
+       evaluate (array of tokens) {
+           if array is empty, throw an error “missing operand”
+           value = read_operand(array of tokens)
+           while (array is not empty) {
+               operator = next token, remove from array
+               if operator isn’t +, -, * or /, throw an error “unrecognized operator”
+               if array is empty, throw an error “missing operand”
+               temp = read_operand(array of tokens)
+               value = value “operator” temp   // perform requested operation
+           }
+           return value
+           }
+We’ll test this code by calling it from inside of calculate function right after you 
+built your array of tokens.
+       	try {
+            val = evaluate(tokens)
+            if tokens isn’t empty, throw an error “ill-formed expression”
+            show val in the output field of your calculator
+       	} catch (err) {
+            return err;   // error message will be printed as the answer
+		}
+
+Try examples using your calculator. Test to make sure all the different
+error conditions are reported correctly.
+
+Step 4: Advanced Features
+1. Add code to deal with negation. To do this, read_operand will have to check for a
+leading “-” token, then do the right thing! You should also implement the +/- button.
+
+2. Add code to support operator precedence, i.e., the operators * and /
+take precedence over + and -. For example the expression “3 + 1 / 5"
+should evaluate to 3.2 not 0.8! Hint: change evaluate to only handle
+additions and subtractions, having it call a new function read_term that
+handles continuous sequences of multiplications and divisions (it stops
+when it runs out of tokens or see a “+” or “-” operator). read_term is
+now the function that calls read_operand.
+
+
+Not required. Just for fun.
+
+For those who truly love this assignment and want to add more
+functionality into your calculators, here are some suggestions:
+
+1. Support numbers with decimal points
+
+2. Make a graphing calculator. Learn about HTML canvas, and use it to
+plot an expression within a domain and range.

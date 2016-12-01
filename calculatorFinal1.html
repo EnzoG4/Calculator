@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Calculator!</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/calc.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/calcstyle.css">
+
+<form>
+	<body>
+		<div class = "calc">
+			<div>
+				<input type = "text" maxLength="13" name = "display" id = "display" ></input>
+			</div>
+			<div>
+				<button type = "button" value = "MC" id = "MC" > MC </button>
+				<button type = "button" value = "M+1" id = "Mplusmn" > M&plusmn; </button>
+				<button type = "button" value = "M-1" id = "Mminus" > M&minus; </button>
+				<button type = "button" value = "MR1" id = "MR" > MR </button>
+			</div>
+			<div>
+				<button type = "reset"  value = "C" id = "reset"> C </button>
+				<button type = "button" class = "PM" value = "&plusmn" id = "plusmn" > &plusmn; </button>
+				<button type = "button" class = "op" value = "/" id = "divide" > &divide; </button>
+				<button type = "button" class = "op" value = "*" id = "times" > &times; </button>
+			</div>
+			<div>
+				<button type = "button" class = "key" value = "7" id = "7" > 7 </button>
+				<button type = "button" class = "key" value = "8" id = "8" > 8 </button>
+				<button type = "button" class = "key" value = "9"id = "9" > 9 </button>
+				<button type = "button" class = "op" value = "-" id = "minus" > &minus; </button>
+			</div>
+			<div>
+				<button type = "button" class = "key" value = "4" id = "4" > 4 </button>
+				<button type = "button" class = "key" value = "5" id = "5" > 5 </button>
+				<button type = "button" class = "key" value = "6" id = "6" > 6 </button>
+				<button type = "button" class = "op" value = "+" id = "plus" > + </button>
+			</div>
+			<div id = "second">
+				<button type = "button" class = "key" value = "1" id = "1" > 1 </button>
+				<button type = "button" class = "key" value = "2" id = "2" > 2 </button>
+				<button type = "button" class = "key" value = "3" id = "3" > 3 </button>
+				<span id = "equals"> <button type = "button" class = "eq" value = "=" id = "equal" > &equals; </button> </span>
+			</div>
+			<div id = "bottom">
+				<button type = "button" class = "key" value = "0" id = "zero"> 0 </button>
+				<button type = "button" id = "decimal" > . </button>
+			</div>
+		</div>
+	</body> 
+</form>
